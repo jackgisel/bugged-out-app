@@ -14,6 +14,23 @@
 
 .centered {
   position: fixed; /* or absolute */
-  top: 40%;
+  top: 50%;
   left: 50%;
+}
+
+h1 {
+    color: #34434b;
+}
+.btn{
+    border-radius: 0;
+}
+.btn-success {
+    background-color: #a09474;
+    border-color: #a09474;
+}
+.btn-success:hover,
+.btn-success:disabled
+ {
+    background-color: #aca286;
+    border-color: #aca286;
 }
