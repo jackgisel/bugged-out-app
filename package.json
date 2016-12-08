@@ -1,8 +1,8 @@
 {
-  "name": "angular2-skeleton",
+  "name": "bugged-out-app",
   "author": "jack gisel",
   "version": "1.0.0",
-  "description": "jack's a2-skeleton",
+  "description": "a system for logging bugs in code",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lite": "lite-server",
