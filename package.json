@@ -1,10 +1,9 @@
 {
-  "name": "bugged-out-app",
-  "author": "jack gisel",
+  "name": "bugged-out",
   "version": "1.0.0",
-  "description": "a system for logging bugs in code",
+  "description": "Jack's bug logging app",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
@@ -12,7 +11,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "coming.soon"
+    "url": ""
   },
   "dependencies": {
     "@angular/common": "2.1.2",
@@ -26,7 +25,7 @@
     "angular-in-memory-web-api": "0.1.13",
     "bootstrap": "4.0.0-alpha.5",
     "core-js": "2.4.1",
-    "firebase": "^3.6.2",
+    "firebase": "^3.6.0",
     "font-awesome": "^4.7.0",
     "reflect-metadata": "0.1.8",
     "rxjs": "5.0.0-beta.12",

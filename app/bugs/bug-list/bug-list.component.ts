@@ -8,10 +8,10 @@ import { Bug } from '../model/bug';
     moduleId: module.id,
     selector: 'bug-list',
     templateUrl: 'bug-list.component.html',
-    styleUrls: [ 'bug-list.component.css' ]
+    styleUrls: ['bug-list.component.css']
 })
 
-export class BugListComponent implements OnInit { 
+export class BugListComponent implements OnInit {
 
     private bugs: Bug[] = [];
 
@@ -19,6 +19,7 @@ export class BugListComponent implements OnInit {
 
     ngOnInit() {
         this.getAddedBugs();
+        this.getUpdatedBugs();
     }
 
     getAddedBugs() {
@@ -28,6 +29,17 @@ export class BugListComponent implements OnInit {
             },
             err => {
                 console.error("Unable to get added bug - ", err);
+            });
+    }
+
+    getUpdatedBugs() {
+        this.bugService.changedListener()
+            .subscribe(updatedBug => {
+                const bugIndex = this.bugs.map(index => index.id).indexOf(updatedBug['id']);
+                this.bugs[bugIndex] = updatedBug;
+            },
+            err => {
+                console.error("Unable to get updated bug - ", err);
             });
     }
 }
