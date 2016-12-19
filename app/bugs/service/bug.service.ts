@@ -33,6 +33,18 @@ export class BugService {
                 updatedBug.id = bug.key;
                 obs.next(updatedBug);
             },
+                err => {
+                    obs.throw(err);
+                })
+        })
+    }
+
+    removedListener(): Observable<any> {
+        return Observable.create(obs => {
+            this.bugsDbRef.on('child_removed', bug => {
+                const removedBug = bug.val() as Bug;
+                obs.next(removedBug);
+            }, 
             err => {
                 obs.throw(err);
             })
@@ -49,7 +61,7 @@ export class BugService {
             createdBy: 'Jack',
             createdDate: Date.now()
         })
-        .catch(err => console.error("Unable to add bug to Firebase - ", err))
+            .catch(err => console.error("Unable to add bug to Firebase - ", err))
     }
 
     updateBug(bug: Bug) {
@@ -58,5 +70,8 @@ export class BugService {
         bug.updatedBy = "John";
         bug.updatedDate = Date.now();
         currentBugRef.update(bug);
+    }
+    removeBug(bug: Bug) {
+        this.bugsDbRef.child(bug.id).remove();
     }
 }

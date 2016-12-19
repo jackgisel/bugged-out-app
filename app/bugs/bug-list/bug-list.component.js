@@ -18,6 +18,7 @@ var BugListComponent = (function () {
     BugListComponent.prototype.ngOnInit = function () {
         this.getAddedBugs();
         this.getUpdatedBugs();
+        this.getRemovedBugs();
     };
     BugListComponent.prototype.getAddedBugs = function () {
         var _this = this;
@@ -36,6 +37,16 @@ var BugListComponent = (function () {
             _this.bugs[bugIndex] = updatedBug;
         }, function (err) {
             console.error("Unable to get updated bug - ", err);
+        });
+    };
+    BugListComponent.prototype.getRemovedBugs = function () {
+        var _this = this;
+        this.bugService.removedListener()
+            .subscribe(function (removedBug) {
+            var removedBugIndex = _this.bugs.map(function (index) { return index.id; }).indexOf(removedBug['id']);
+            _this.bugs.splice(removedBugIndex);
+        }, function (err) {
+            console.error("Unable to delete the bug -", err);
         });
     };
     BugListComponent = __decorate([

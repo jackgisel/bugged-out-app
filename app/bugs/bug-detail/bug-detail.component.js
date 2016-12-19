@@ -66,6 +66,9 @@ var BugDetailComponent = (function () {
     BugDetailComponent.prototype.cleanBug = function () {
         this.currentBug = new bug_1.Bug(null, null, this.statuses.Logged, this.severities.Severe, null, null, null, null, null);
     };
+    BugDetailComponent.prototype.removeBug = function () {
+        this.bugService.removeBug(this.currentBug);
+    };
     BugDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

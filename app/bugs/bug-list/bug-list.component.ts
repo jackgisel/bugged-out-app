@@ -20,6 +20,7 @@ export class BugListComponent implements OnInit {
     ngOnInit() {
         this.getAddedBugs();
         this.getUpdatedBugs();
+        this.getRemovedBugs();
     }
 
     getAddedBugs() {
@@ -41,5 +42,16 @@ export class BugListComponent implements OnInit {
             err => {
                 console.error("Unable to get updated bug - ", err);
             });
+    }
+    
+    getRemovedBugs() {
+        this.bugService.removedListener()
+            .subscribe(removedBug => {
+                const removedBugIndex = this.bugs.map(index => index.id).indexOf(removedBug['id']);
+                this.bugs.splice(removedBugIndex);
+            },
+            err => {
+                console.error("Unable to delete the bug -", err);
+            })
     }
 }

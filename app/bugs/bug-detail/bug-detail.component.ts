@@ -80,4 +80,8 @@ export class BugDetailComponent implements OnInit {
     cleanBug() {
         this.currentBug = new Bug(null, null, this.statuses.Logged, this.severities.Severe, null, null, null, null, null);
     }
+    
+    removeBug() {
+        this.bugService.removeBug(this.currentBug);
+    }
 }
